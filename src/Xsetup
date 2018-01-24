@@ -12,7 +12,7 @@ xset -dpms
 xset s off
 xhost +
 
-feh --bg-scale /usr/share/images/xdm-background.png
+#feh --bg-scale /usr/share/images/xdm-background.png
 
 if test -x /usr/bin/od6config; then
     # mild underclock on AMD -- 290X is a motherboard killer.
@@ -26,6 +26,8 @@ elif test -x /usr/bin/nvidia-settings; then
 fi
 
 if test -x /opt/hashstack/agent/hashstack-agent.bin; then
+    start hashstack-agent || restart hashstack-agent
+elif test -x /opt/hashstack-agent-ng/hashstack-agent-ng; then
     start hashstack-agent || restart hashstack-agent
 fi
 
